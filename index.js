@@ -114,7 +114,6 @@ listProducts.addEventListener('click', (e)=> {
     const myTarget = e.target;
     if (myTarget.classList.contains('addCart')) {
       const parentEl = myTarget.parentElement.id
-    //   console.log(parentEl);
       addProductToCart(parentEl);
       
     }
