@@ -97,7 +97,7 @@ function addProductToList(e) {
             div.id = element.id
             div.innerHTML = `
             <img src="${element.image}" alt="${element.name}">
-            <h2>${element.name}</h2>
+            <h2 class="name">${element.name}</h2>
             <div class="price">#${element.price}</div>
             <button class="addCart">
                 Add To Cart
@@ -107,6 +107,26 @@ function addProductToList(e) {
         );
     }
 }
+
+
+let parentEl = ''
+
+function notify(e) {
+    e.preventDefault()
+    const myTarget = e.target;
+    if (myTarget.classList.contains('addCart')) {
+       parentEl = myTarget.parentElement.firstElementChild.nextElementSibling.innerText
+      if (cart.some( exist => exist.id == e.target.parentElement.id)) {
+       
+       setTimeout(() => {
+        alert(`You added ${parentEl} to the cart`)
+       }, 500);
+        
+      } 
+
+    } 
+}
+
 
 
 listProducts.addEventListener('click', (e)=> {
@@ -132,6 +152,7 @@ function addProductToCart(id) {
         console.log('Item already exists');
 
         increaseValue('plus', id)
+
     } else {
         cart.push({
             ...items,
@@ -139,6 +160,7 @@ function addProductToCart(id) {
 
         })
     }
+
     
     updateCart()
 }
@@ -232,7 +254,7 @@ function removeItemFromCart(id) {
 
 
 
-
+listProducts.addEventListener('click', notify)
 
 cartIcon.addEventListener('click', ()=> {
     body.classList.toggle('showCart');
