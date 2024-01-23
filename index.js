@@ -119,10 +119,10 @@ listProducts.addEventListener('click', (e)=> {
     }
 })
 
-// let cart = [];
+let cart = [];
 
 // if there is nothing in the local storage, the Cart will be an empty array but if there is something, it will be parsed into the Cart.
-let cart = JSON.parse(localStorage.getItem('CART') || []);
+// let cart = JSON.parse(localStorage.getItem('CART') || []);
 updateCart()
 
 function addProductToCart(id) {
